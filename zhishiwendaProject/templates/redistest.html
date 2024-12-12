@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}测试redis是否可以添加成功{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/detail.css')}}">
+{% endblock %}
+
+{% block body %}
+    <div class="row" style="margin-top: 20px;">
+            <div class="col"></div>
+            <div class="col-10" style="background-color: #fff;padding: 20px;">
+                <h3 class="page-title">往redis里添加键值对测试</h3>
+                
+                <form action="{{ url_for('qa.redisset') }}" method="post">
+                    <div class="form-group">
+                        关键字：<input type="text" placeholder="请填写关键字" name="key" class="form-control">
+                        值：<input type="text" placeholder="请填写值" name="value" class="form-control">
+                   
+                    </div>
+                    <div class="form-group" style="text-align: right;">
+                        <button class="btn btn-primary">评论</button>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="col"></div>
+        </div>
+{% endblock %}
