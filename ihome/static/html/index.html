@@ -21,7 +21,7 @@
                 <a class="btn top-btn btn-theme" href="/register.html">注册</a>
                 <a class="btn top-btn btn-theme" href="/login.html">登录</a>
             </div>
-            <div class="user-info fr"><span><i class="fa fa-user fa-lg"></i></span> <a class="user-name" href="/my.html"></a></div>
+            <div class="user-info fr"> <a class="user-name" href="/my.html"></a></div>
         </div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -53,7 +53,7 @@
                             </div>
                             <script id="area-list-tmpl" type="text/html">
                             {{each areas as area}}
-                                <a href="#" area-id="{{area.aid}}">{{area.aname}}</a>
+                                <a href="#" area-id="{{area.areaid}}">{{area.areaname}}</a>
                             {{/each}}
                             </script>
                         </div>
@@ -96,10 +96,10 @@
             </div>
         </div>
         <div class="footer">
-            <p><span><i class="fa fa-copyright"></i></span>爱家租房&nbsp;&nbsp;享受家的温馨</p>
+            <p>爱家租房&nbsp;&nbsp;享受家的温馨</p>
         </div>
     </div>
-    
+
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="/static/plugins/swiper/js/swiper.jquery.min.js"></script>

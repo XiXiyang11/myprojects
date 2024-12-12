@@ -17,16 +17,18 @@ def get_area_info():
     # 尝试从redis中读取数据
     try:
         resp_json = redis_store.get("area_info").decode('utf-8')
-        data=json.loads(resp_json)
-        print(resp_json)
-        print(data)
+
+        print('resp_json:',resp_json)
+        data = json.loads(resp_json)
+        print('jsonifydata:',jsonify(data))
     except Exception as e:
         current_app.logger.error(e)
     else:
         if resp_json is not None:
             # redis有缓存数据
             current_app.logger.info("hit redis area_info")
-            return jsonify(data), 200, {"Content-Type": "application/json"}
+
+            return resp_json, 200, {"Content-Type": "application/json"}
 
     # 查询数据库，读取城区信息
     try:
@@ -44,11 +46,11 @@ def get_area_info():
     # 将数据转换为json字符串
     resp_dict = dict(errno=RET.OK, errmsg="OK", data=area_dict_li)
     print('resp_dict:',resp_dict)
-    resp_json = json.dumps(resp_dict).encode('utf-8')
-
+    resp_json = json.dumps(resp_dict, ensure_ascii=False)#.encode('utf-8')
+    print('resp_json:',resp_json)
     # 将数据保存到redis中
     try:
-        redis_store.setex("area_info", constants.AREA_INFO_REDIS_CACHE_EXPIRES, resp_json.encode('utf-8'))
+        redis_store.setex("area_info", constants.AREA_INFO_REDIS_CACHE_EXPIRES, resp_json)#.encode('utf-8'))
     except Exception as e:
         current_app.logger.error(e)
 

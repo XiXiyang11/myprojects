@@ -7,6 +7,7 @@ $(document).ready(function(){
     // 向后端获取城区信息
     $.get("/api/v1.0/areas", function (resp) {
         if (resp.errno == "0") {
+            console.log('resp.data:', resp.data);
             var areas = resp.data;
             // for (i=0; i<areas.length; i++) {
             //     var area = areas[i];

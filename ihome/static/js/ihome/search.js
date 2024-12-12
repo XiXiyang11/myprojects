@@ -79,7 +79,7 @@ $(document).ready(function(){
     $.get("/api/v1.0/areas", function(data){
         if ("0" == data.errno) {
             // 用户从首页跳转到这个搜索页面时可能选择了城区，所以尝试从url的查询字符串参数中提取用户选择的城区
-            var areaId = queryData["aid"];
+            var areaId = queryData["areaid"];
             // 如果提取到了城区id的数据
             if (areaId) {
                 // 遍历从后端获取到的城区信息，添加到页面中
